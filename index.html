@@ -3,29 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ray — Portfolio</title>
-
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <!-- External Stylesheet -->
     <link rel="stylesheet" href="style.css">
+    <title>Ray — Portfolio</title>
 </head>
 <body>
 
-    <!-- ── HEADER / NAV ── -->
+    <!-- ── HEADER ──────────────────────────────────────────────── -->
     <header>
         <a href="#home" class="logo">Rashid Ray Aiden</a>
         <nav>
-            <a href="#home" class="active">Home</a>
-            <a href="#services">Services</a>
-            <a href="#skills">Skills</a>
-            <a href="#education">Education</a>
-            <a href="#experience">Experience</a>
-            <a href="#contact">Contact</a>
+            <a href="#home"       class="active" onclick="showSection('home',       this)">Home</a>
+            <a href="#services"              onclick="showSection('services',    this)">Services</a>
+            <a href="#skills"                onclick="showSection('skills',      this)">Skills</a>
+            <a href="#education"             onclick="showSection('education',   this)">Education</a>
+            <a href="#experience"            onclick="showSection('experience',  this)">Experience</a>
+            <a href="#contact"               onclick="showSection('contact',     this)">Contact</a>
         </nav>
     </header>
 
-    <!-- ── HOME ── -->
+    <!-- ── HOME ────────────────────────────────────────────────── -->
     <section class="home" id="home">
         <div class="home-img">
             <img src="Ray.jpeg" alt="Ray">
@@ -35,17 +32,38 @@
             <h3 class="typing-text">I'm a <span></span></h3>
             <p>I'm a student at SMKN 1 Klaten</p>
             <p>I'm still learning and improving my skills, but I'm ready to contribute to any project or team.</p>
+
             <div class="social-icons">
                 <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://github.com/RaY-ssudo" target="_blank"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.instagram.com/rayid.en/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://github.com/RaY-ssudo"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.instagram.com/rayid.en/"><i class="fa-brands fa-instagram"></i></a>
             </div>
-            <a href="mailto:rashidrayiden@gmail.com" class="btn">Hire me</a>
+            <div class="btn-group">
+                <a href="#contact" class="btn" onclick="showSection('contact', document.querySelector('nav a[href=\'#contact\']'))">Hire Me</a>
+                <div class="cv-dropdown-wrapper">
+                    <button class="btn" id="cvBtn">
+                        Download CV &nbsp;<i class="fa-solid fa-chevron-down" style="font-size:1.2rem;"></i>
+                    </button>
+                    <div class="cv-dropdown-menu" id="cvDropdown">
+                        <a onclick="downloadCV('CV'); cvDropdown.classList.remove('open'); cvBtn.classList.remove('open');">
+                            <span class="flag">EN</span> English Version
+                        </a>
+                        <a onclick="downloadCV('cv-id.pdf'); cvDropdown.classList.remove('open'); cvBtn.classList.remove('open');">
+                            <span class="flag">ID</span> Indonesian Version
+                        </a>
+                        <a onclick="downloadAll();">
+                            <span class="flag">📦</span> Download All
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
     </section>
 
-    <!-- ── SERVICES ── -->
-    <section id="services">
+    <!-- ── SERVICES ─────────────────────────────────────────────── -->
+    <section id="services" style="display: none;">
         <p class="section-subtitle">// what i offer</p>
         <h2 class="section-title">My <span>Services</span></h2>
         <div class="services-grid">
@@ -82,8 +100,8 @@
         </div>
     </section>
 
-    <!-- ── SKILLS ── -->
-    <section id="skills">
+    <!-- ── SKILLS ───────────────────────────────────────────────── -->
+    <section id="skills" style="display: none;">
         <p class="section-subtitle">// what i know</p>
         <h2 class="section-title">My <span>Skills</span></h2>
         <div class="skills-grid">
@@ -126,50 +144,62 @@
         </div>
     </section>
 
-    <!-- ── EDUCATION ── -->
-    <section id="education">
+    <!-- ── EDUCATION ────────────────────────────────────────────── -->
+    <section id="education" style="display: none;">
         <p class="section-subtitle">// my background</p>
         <h2 class="section-title">My <span>Education</span></h2>
         <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-date">2023 — Present</div>
-                <div class="timeline-title">SMKN 1 Klaten</div>
-                <div class="timeline-sub">Vocational High School — Computer &amp; Network Engineering</div>
-                <div class="timeline-desc">Studying computer networking, web development, and software engineering. Currently learning DevOps, automation, and AI tools on the side.</div>
-            </div>
             <div class="timeline-item">
                 <div class="timeline-date">Self-taught</div>
                 <div class="timeline-title">Online Learning</div>
                 <div class="timeline-sub">YouTube, Docs, and Practice</div>
                 <div class="timeline-desc">Learning HTML, CSS, JavaScript, Python, Docker, and Linux through online resources, documentation, and building personal projects.</div>
             </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2023 — Present</div>
+                <div class="timeline-title">SMKN 1 Klaten</div>
+                <div class="timeline-sub">Vocational High School — Computer &amp; Network Engineering</div>
+                <div class="timeline-desc">Studying computer networking, web development, and software engineering. Currently learning DevOps, automation, and AI tools on the side.</div>
+            </div>
         </div>
     </section>
 
-    <!-- ── EXPERIENCE ── -->
-    <section id="experience">
+    <!-- ── EXPERIENCE ───────────────────────────────────────────── -->
+    <section id="experience" style="display: none;">
         <p class="section-subtitle">// what i've done</p>
         <h2 class="section-title">My <span>Experience</span></h2>
         <div class="exp-grid">
             <div class="exp-card">
-                <div class="exp-year">2024</div>
-                <h3>Portfolio Website</h3>
+                <div class="exp-year">2016</div>
+                <h3>Fixing PC &amp; Troubleshooting</h3>
                 <div class="exp-company">Personal Project</div>
-                <p>Built a responsive personal portfolio website from scratch using HTML, CSS, and JavaScript with smooth section navigation and typing animations.</p>
+                <p>Diagnosing and fixing hardware and software issues on personal computers.</p>
             </div>
             <div class="exp-card">
-                <div class="exp-year">2024</div>
-                <h3>Python Automation Scripts</h3>
-                <div class="exp-company">Personal Project</div>
-                <p>Created scripts to automate file management and basic repetitive tasks using Python.</p>
-            </div>
-            <div class="exp-card">
-                <div class="exp-year">2023</div>
+                <div class="exp-year">2025</div>
                 <h3>Network Lab Practicals</h3>
                 <div class="exp-company">SMKN 1 Klaten</div>
                 <p>Configured routers, switches, and basic LAN/WAN setups during school networking labs.</p>
             </div>
             <div class="exp-card">
+                <div class="exp-year">2026</div>
+                <h3>Portfolio Website</h3>
+                <div class="exp-company">Personal Project</div>
+                <p>Built a responsive personal portfolio website from scratch using HTML, CSS, and JavaScript with smooth section navigation and typing animations.</p>
+            </div>
+            <div class="exp-card">
+                <div class="exp-year">ongoing</div>
+                <h3>Python Automation Scripts</h3>
+                <div class="exp-company">Personal Project</div>
+                <p>Created scripts to automate file management and basic repetitive tasks using Python.</p>
+            </div>
+            <div class="exp-card">
+                <div class="exp-year">Ongoing</div>
+                <h3>Reverse Engineering</h3>
+                <div class="exp-company">Self-Study</div>
+                <p>Reverse engineering some offline games to understand their mechanics and improve problem-solving skills.</p>
+            </div>
+             <div class="exp-card">
                 <div class="exp-year">Ongoing</div>
                 <h3>Learning DevOps &amp; AI</h3>
                 <div class="exp-company">Self-Study</div>
@@ -178,8 +208,8 @@
         </div>
     </section>
 
-    <!-- ── CONTACT ── -->
-    <section id="contact">
+    <!-- ── CONTACT ───────────────────────────────────────────────── -->
+    <section id="contact" style="display: none;">
         <p class="section-subtitle">// get in touch</p>
         <h2 class="section-title">Contact <span>Me</span></h2>
         <div class="contact-wrapper">
@@ -205,16 +235,16 @@
                 </div>
             </div>
             <div class="contact-form">
-                <input type="text" id="name" placeholder="Your Name">
-                <input type="email" id="email" placeholder="Your Email">
-                <input type="text" id="subject" placeholder="Subject">
-                <textarea id="message" placeholder="Your Message"></textarea>
-                <button type="button" onclick="sendMail()">Send Message</button>
+                <input type="text" placeholder="Your Name">
+                <input type="email" placeholder="Your Email">
+                <input type="text" placeholder="Subject">
+                <textarea placeholder="Your Message"></textarea>
+                <button type="button">Send Message</button>
             </div>
         </div>
     </section>
 
-    <!-- ── EXTERNAL SCRIPT ── -->
+    <!-- ── SCRIPT ────────────────────────────────────────────────── -->
     <script src="script.js"></script>
 
 </body>
